@@ -17,7 +17,7 @@ const userSchema=mongoose.Schema({
         type:String,
         enum:['associate','manager'],
         default:'associate'
-    }
+    } 
 })
 
 

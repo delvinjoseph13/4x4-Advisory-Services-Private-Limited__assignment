@@ -14,7 +14,7 @@ const timesheetSchema=mongoose.Schema({
     status:{
         type:String,
         enum:['draft','submitted'],
-        default:'draft'
+        default:'draft' 
     }
 })
 

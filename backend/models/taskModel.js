@@ -13,7 +13,7 @@ const taskSchema=mongoose.Schema({
     },
     estimatedHours:{
         type:Number
-    },
+    }, 
     Date:{
         type:Date
     }

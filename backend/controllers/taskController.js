@@ -8,7 +8,7 @@ export const assignTasks=async(req,res)=>{
         res.status(201).json({message:"Task Added",data:task})
     } catch (error) {
         res.status(500).json({message:error.message})
-    }
+    } 
 
 }
 

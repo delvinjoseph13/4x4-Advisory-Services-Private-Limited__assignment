@@ -8,4 +8,4 @@ userRoute.post('/register',userRegister);
 userRoute.post('/login',userLogin)
 
 
-export default userRoute;
+export default userRoute; 

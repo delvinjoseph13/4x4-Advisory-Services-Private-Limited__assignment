@@ -38,7 +38,7 @@ export const userLogin=async(req,res)=>{
         if(!validPassword){
             return res.status(400).json({message:"Password Is Not Matching"})
         }
-
+ 
         const token=jwt.sign({ id: user._id, role: user.role },"secret_key",{expiresIn:'1h'})
 
         res.status(200).json({

@@ -15,7 +15,7 @@ export const authMiddlewar=(req,res,next)=>{
         req.user=decode
         next()
 
-    } catch (error) {
+    } catch (error) { 
         
         res.status(401).json({message:"Invalid Token"})
     }
