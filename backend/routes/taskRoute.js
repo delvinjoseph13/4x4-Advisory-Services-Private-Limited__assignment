@@ -1,6 +1,6 @@
 import express from 'express';
-import { roleCheck } from '../middleware/auth';
-import { assignTasks, getAllTask, getTask } from '../controllers/taskController';
+import { roleCheck } from '../middleware/auth.js';
+import { assignTasks, getAllTask, getTask } from '../controllers/taskController.js';
 
 const taskRoute=express.Router();
 

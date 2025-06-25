@@ -1,4 +1,4 @@
-import timesheetModel from "../models/timesheet";
+import timesheetModel from "../models/timesheet.js";
 
 
 //Submit hours (associate)

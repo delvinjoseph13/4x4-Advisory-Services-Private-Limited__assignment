@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import API from "../api";
+import { setUserSession } from "../auth";
 
 function UserLogin(){
     const [userDetails,setUserDetails]=useState({
@@ -8,6 +10,8 @@ function UserLogin(){
         password:""
 
     })
+
+    const navigate=useNavigate()
 
     const [error,setError]=useState({});
     const [success,setSuccess]=useState(null)
@@ -31,19 +35,15 @@ function UserLogin(){
             newError.password="Password is required"
         }
 
-        if(Object.keys(newError.length > 0)){
+        if(Object.keys(newError).length > 0){
             setError(newError);
             return;
         }
         try {
-            const loginApi=await axios.post(`http://localhost:5000/login`,userDetails,{
-               headers:{
-                "Content-Type":"application/json"
-               }
-            })
+const res = await API.post('/auth/login', userDetails);
+setUserSession(res.data.token, res.data.user);
+navigate(res.data.user.role === 'manager' ? '/manager' : '/associate');
 
-            const data=loginApi.data;
-            setSuccess(data.message) 
                        
         } catch (error) {
             alert("User login error" || error)

@@ -1,6 +1,6 @@
 import express from "express"
-import { createTimeSheet, forManager, timesheetAssociate } from "../controllers/timeSheetController"
-import { roleCheck } from "../middleware/auth"
+import { createTimeSheet, forManager, timesheetAssociate } from "../controllers/timeSheetController.js"
+import { roleCheck } from "../middleware/auth.js"
 
 const timesheetRoute=express.Router()
 

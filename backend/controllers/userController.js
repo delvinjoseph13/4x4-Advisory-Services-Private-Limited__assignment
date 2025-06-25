@@ -33,7 +33,7 @@ export const userLogin=async(req,res)=>{
             return res.status(404).json({message:"User Not Found"})
         }
 
-        let validPassword=bcrypt.compareSync(password,user.password);
+const validPassword = await bcrypt.compare(password, user.password);
 
         if(!validPassword){
             return res.status(400).json({message:"Password Is Not Matching"})

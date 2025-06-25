@@ -1,13 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link,Navigate } from "react-router-dom";
+import { Link,Navigate, useNavigate,  } from "react-router-dom";
+import API from "../api";
 
 function UserRegister(){
     const [userRegister,setUserRegister]=useState({
         userName:"",
         email:"",
-        password:""
+        password:"",
+        role: 'associate'
     })
+
+    const navigate=useNavigate()
 
     const [error,setError]=useState({})
 
@@ -32,21 +36,18 @@ function UserRegister(){
             newError.password="Please enter the password"
         }
 
-        if(Object.keys(newError.length > 0)){
+        if(Object.keys(newError).length > 0){
             setError(newError);
             return;
         }
 
         try {
-            const registerApi=await axios.post(`http://localhost:5000`,userRegister,{
-                headers:{
-                    "Content-Type":"application/json"
-                }
-            })
-            console.log(registerApi.data);
+            await API.post('/auth/register',userRegister);
+            navigate('/')
+
         } catch (error) {
             console.log(error);
-            alert("Error While Registering" || error)
+            alert("User Already Exists OR Error While Registering" || error)
             
         }
     }
@@ -82,19 +83,26 @@ function UserRegister(){
                 <input 
                 type="password" 
                 name="password"
-                className="w-full border p-2 rounded"
+                className="w-full border p-2 rounded mb-4"
                 value={userRegister.password} 
                 onChange={handleChanges}
                 />
 
                 {error.password && <p className="text-sm text-red-500">{error.password}</p>}
-
+                
+                <select 
+                onChange={handleChanges}
+                className="w-full mb-4 px-4 py-2 rounded border">
+                    <option name="role" value="associate">Associate</option>
+                    <option name="role" value="manager">Manager</option>
+                </select>
+               
                 <button
                 type="submit"
                 className="w-full p-3 bg-blue-400 font-semibold text-center text-lg mt-2 rounded-2xl mb-2">
                     Register
                 </button>
-                <p>Already Registed go to span <Link to="/" className="text-blue-500">Login</Link></p>
+                <p>Already Registed go to  <Link to="/" className="text-blue-500">Login</Link></p>
 
             </form>
         </div>
