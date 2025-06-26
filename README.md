@@ -63,5 +63,5 @@ npm run dev
 
 
 Web Host Link : - https://4x4-advisory-services-private-limit-virid.vercel.app/
-2)- 4x4-advisory-services-private-lim-git-5b930d-playrooms-projects.vercel.app
-3)-4x4-advisory-services-private-limited-assignment-cr6-k84eopfvf.vercel.app
+2)- https://4x4-advisory-services-private-lim-git-5b930d-playrooms-projects.vercel.app
+3)- https://4x4-advisory-services-private-limited-assignment-cr6-k84eopfvf.vercel.app
