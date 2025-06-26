@@ -39,15 +39,18 @@ function UserLogin(){
             setError(newError);
             return;
         }
+        setLoading(true)
         try {
-const res = await API.post('/auth/login', userDetails);
-setUserSession(res.data.token, res.data.user);
-navigate(res.data.user.role === 'manager' ? '/manager' : '/associate');
+           const res = await API.post('/auth/login', userDetails);
+           setUserSession(res.data.token, res.data.user);
+           navigate(res.data.user.role === 'manager' ? '/manager' : '/associate');
 
                        
         } catch (error) {
             alert("User login error" || error)
            
+        }finally { 
+            setLoading(false)
         }
     }
 
@@ -85,7 +88,7 @@ navigate(res.data.user.role === 'manager' ? '/manager' : '/associate');
                  type="submit"
                  className="w-full bg-blue-400 p-3 mt-5 font-semibold text-center text-lg rounded-2xl "
                  >
-                    Login
+                    {loading ? "Loading.." : "Login"}
                  </button>
 
                  <p>No Account Go to <Link to="/register" className="text-blue-500">Register</Link></p>

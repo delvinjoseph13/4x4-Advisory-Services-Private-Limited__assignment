@@ -14,6 +14,7 @@ function UserRegister(){
     const navigate=useNavigate()
 
     const [error,setError]=useState({})
+    const [loading,setLoading]=useState(false)
 
     const handleChanges=(e)=>{
         const {name,value}=e.target;
@@ -41,6 +42,8 @@ function UserRegister(){
             return;
         }
 
+        setLoading(true)
+
         try {
             await API.post('/auth/register',userRegister);
             navigate('/')
@@ -49,6 +52,8 @@ function UserRegister(){
             console.log(error);
             alert("User Already Exists OR Error While Registering" || error)
             
+        }finally{
+            setLoading(false)
         }
     }
     return (
@@ -106,7 +111,7 @@ function UserRegister(){
                 <button
                 type="submit"
                 className="w-full p-3 bg-blue-400 font-semibold text-center text-lg mt-2 rounded-2xl mb-2">
-                    Register
+                    {loading ? "Loading..." : "Register"}
                 </button>
                 <p>Already Registed go to  <Link to="/" className="text-blue-500">Login</Link></p>
 
