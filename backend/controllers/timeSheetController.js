@@ -6,7 +6,7 @@ export const createTimeSheet=async(req,res)=>{
     const { taskId, actualHours } = req.body; 
     try {
         const ts=await timesheetModel.create({
-             associate: req.user.id, task: taskId, actualHours 
+             associate: req.user.id, task: taskId, actualHours,status: "submitted"
         })
 
         res.status(201).json({message:"Submited Hours",ts})

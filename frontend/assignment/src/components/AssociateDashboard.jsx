@@ -5,6 +5,7 @@ import API from "../api";
 function AssociateDashboard(){
     
     const [tasks,setTasks]=useState([]);
+    const [error,setError]=useState([])
     const [form,setForm]=useState({
         taskId:'',actualHours:''
     })
@@ -12,11 +13,12 @@ function AssociateDashboard(){
 
     const fetchData=async()=>{
         try {
-         const res=await API.get(`/tasks/my/${user.id}`)
-        setTasks(res.data.tasks) 
+         const res=await API.get('/tasks/my'); 
+         
+         setTasks(res.data.tasks) 
         } catch (error) {
             console.log(error);
-            alert("Error",error)
+            setError(error.response.data.message)
         }
 
 
@@ -29,15 +31,22 @@ function AssociateDashboard(){
 
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        await API.post('/timesheets',form);
+        try {
+            await API.post('/timesheet/',form);
+        setTasks(prev=>prev.filter(t=>t._id !==form.taskId))
         setForm({
             taskId:'',
             actualHours:''
         })
-
+        } catch (error) {
+            console.log("Error")
+            alert(error.response.data.message)
+            
+        }
+        
     }
 
-    const handleChanges=()=>{
+    const handleChanges=(e)=>{
         const {name,value}=e.target;
         setForm(prev=>({
             ...prev,
@@ -45,11 +54,12 @@ function AssociateDashboard(){
         }))
     }
     
-    return (
+    return (    
         <div className="p-6 bg-gray-50 min-h-screen">
             <div className="max-w-3xl mx-auto bg-white p-6 rounded shadow-md">
                 <h2 className="text-xl font-semibold mb-4">Associate Dashboard</h2>
                 <h3 className="text-lg font-medium mb-2">My Tasks</h3>
+                {error && <p className="text-red-500 mb-2 font-sm">{error}</p>}
                 <ul className="mb-6 space-y-1">
                     {
                         tasks.map(t=>(

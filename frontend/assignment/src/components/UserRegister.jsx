@@ -5,10 +5,10 @@ import API from "../api";
 
 function UserRegister(){
     const [userRegister,setUserRegister]=useState({
-        userName:"",
+        username:"",
         email:"",
         password:"",
-        role: 'associate'
+        role: ''
     })
 
     const navigate=useNavigate()
@@ -26,7 +26,7 @@ function UserRegister(){
     const handleSubmit=async(e)=>{
         e.preventDefault();
         const newError={}
-        if(!userRegister.userName){
+        if(!userRegister.username){
             newError.userName="Please enter your name"
         }
         if(!userRegister.email){
@@ -61,9 +61,9 @@ function UserRegister(){
                 <label className="block font-semibold mb-2">UserName</label>
                 <input 
                 type="text" 
-                name="userName"
+                name="username"
                 className="w-full border p-2 rounded"
-                value={userRegister.userName} 
+                value={userRegister.username} 
                 onChange={handleChanges}/>
 
                 {error.userName && <p className="text-sm text-red-500">{error.userName}</p>}
@@ -89,13 +89,19 @@ function UserRegister(){
                 />
 
                 {error.password && <p className="text-sm text-red-500">{error.password}</p>}
-                
+            
+
                 <select 
-                onChange={handleChanges}
-                className="w-full mb-4 px-4 py-2 rounded border">
-                    <option name="role" value="associate">Associate</option>
-                    <option name="role" value="manager">Manager</option>
-                </select>
+                 name="role"
+                 value={userRegister.role} 
+                 onChange={handleChanges}
+                 className="w-full mb-4 px-4 py-2 rounded border"
+                  >
+                 <option value="" disabled>Select Role</option>
+                 <option value="associate">Associate</option>
+                 <option value="manager">Manager</option>
+                 </select>
+
                
                 <button
                 type="submit"

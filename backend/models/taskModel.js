@@ -5,16 +5,18 @@ const taskSchema=mongoose.Schema({
     manager:{
         type:mongoose.Schema.Types.ObjectId,ref:'User'
     },
-    associate:{
-        type:mongoose.Schema.Types.ObjectId,ref:'User'
-    },
+      associate: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User", 
+    required: true,
+  },
     description : {
         type:String
     },
     estimatedHours:{
         type:Number
     }, 
-    Date:{
+    date:{
         type:Date
     }
 })

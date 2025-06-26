@@ -5,6 +5,7 @@ import taskRoute from "./routes/taskRoute.js";
 import timesheetRoute from "./routes/timeSheetRoute.js";
 import cors from "cors"
 import dotenv from 'dotenv'
+import allUserRoute from "./routes/allUserRoute.js";
 
 dotenv.config()
 
@@ -13,8 +14,10 @@ app.use(express.json());
 app.use(cors())
 
 app.use('/api/auth',userRoute)
-app.use('/api/task',taskRoute)
+app.use('/api/tasks',taskRoute)
 app.use('/api/timesheet',timesheetRoute)
+app.use('/api/all',allUserRoute)
+
 
     mongoose.connect(process.env.MOGODB_URL)
     const db=mongoose.connection

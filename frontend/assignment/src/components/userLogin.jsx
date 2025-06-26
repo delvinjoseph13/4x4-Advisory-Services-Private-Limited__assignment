@@ -83,7 +83,7 @@ navigate(res.data.user.role === 'manager' ? '/manager' : '/associate');
 
                  <button
                  type="submit"
-                 className="w-full bg-blue-400 p-3 mt-2 font-semibold text-center text-lg rounded-2xl"
+                 className="w-full bg-blue-400 p-3 mt-5 font-semibold text-center text-lg rounded-2xl "
                  >
                     Login
                  </button>
