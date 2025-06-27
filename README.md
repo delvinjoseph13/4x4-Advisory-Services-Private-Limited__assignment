@@ -41,7 +41,7 @@ npm install
 
 ### 4. Environment Variables
 
-Create a .env file with the following contents: MONGODB_URL=mongodb://localhost:27017/agent-distributor,SECRET_KEY="SECRET_KEY" or use MongoDb Atlas
+Create a .env file with the following contents: MONGODB_URL=mongodb://localhost:27017/assignment,SECRET_KEY="SECRET_KEY" or use MongoDb Atlas
 
 ### 5. Run the Server
 
