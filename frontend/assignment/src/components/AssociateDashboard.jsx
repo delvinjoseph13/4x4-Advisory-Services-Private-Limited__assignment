@@ -12,6 +12,7 @@ function AssociateDashboard() {
   const user = getUser();
   const navigate = useNavigate();
 
+  //fetching all the tasks for associate
   const fetchData = async () => {
     try {
       const res = await API.get("/tasks/my");
@@ -27,6 +28,7 @@ function AssociateDashboard() {
     fetchData();
   }, []);
 
+  //function for subiting the task
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -61,6 +63,7 @@ function AssociateDashboard() {
     }));
   };
 
+  //reset the task filter
   const refreshFilteredData = () => {
     setSelectedDate("");
     setFilteredTask(tasks);

@@ -15,6 +15,7 @@ function ManagerDashboard() {
 
   const navigate = useNavigate();
 
+  //getting all timesheet for manager
   const fetchData = async () => {
     try {
       const ts = await API.get('/timesheet/all');
@@ -25,6 +26,7 @@ function ManagerDashboard() {
     }
   };
 
+  //fetching all user
   const fetchUsers = async () => {
     try {
       const associates = await API.get('all/associates');
@@ -33,7 +35,8 @@ function ManagerDashboard() {
       console.log(error);
     }
   };
-
+ 
+  //fetching all tasks
   const fetchTasks = async () => {
     try {
       const task = await API.get('/tasks/all');

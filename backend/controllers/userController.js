@@ -6,6 +6,7 @@ import dotenv from "dotenv"
 
 dotenv.config()
 
+//register controller
 export const userRegister=async(req,res)=>{
     const {username,email,password,role}=req.body
     try {
@@ -29,6 +30,7 @@ export const userRegister=async(req,res)=>{
     }
 }
 
+//login controller
 export const userLogin=async(req,res)=>{
     const {email,password}=req.body;
     try {

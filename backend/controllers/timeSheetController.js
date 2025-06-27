@@ -29,7 +29,7 @@ export const timesheetAssociate=async(req,res)=>{
     }
 }
 
-
+//getting all time sheet for manager
 export const forManager = async (req, res) => {
   try {
     const timesheets = await timesheetModel

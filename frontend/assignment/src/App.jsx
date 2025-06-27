@@ -4,6 +4,7 @@ import UserRegister from "./components/UserRegister";
 import PrivateRoute from "./components/PrivateRoute";
 import ManagerDashboard from "./components/MangerDashboard";
 import AssociateDashboard from "./components/AssociateDashboard";
+import NotFoundPage from "./components/NotPageFound";
 
 function App() {
   return (
@@ -22,8 +23,7 @@ function App() {
           <Route path="/associate" element={<AssociateDashboard />} />
         </Route>
 
-        {/* Catch-all route */}
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
